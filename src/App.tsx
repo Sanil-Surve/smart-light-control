@@ -56,7 +56,7 @@ const App: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center p-4">
-      <h1 className="text-3xl font-bold mb-4">IoT Light Control</h1>
+      <h1 className="text-3xl font-bold mb-4">Smart Light Control</h1>
       <div className="mb-4 text-lg">
         Status:{" "}
         <span className={isConnected ? "text-green-500" : "text-red-500"}>
