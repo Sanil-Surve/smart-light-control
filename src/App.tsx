@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
+import Lottie from "react-lottie-player";
+import lightData from "./assets/bulb-animation.json";
 
 const MQTT_BROKER = import.meta.env.VITE_MQTT_BROKER;
 const MQTT_USERNAME = import.meta.env.VITE_MQTT_USERNAME;
@@ -62,6 +64,14 @@ const App: React.FC = () => {
         <span className={isConnected ? "text-green-500" : "text-red-500"}>
           {isConnected ? "Connected" : "Disconnected"}
         </span>
+      </div>
+      <div className="w-64 h-64 mb-4 flex items-center justify-center">
+          <Lottie
+            loop
+            animationData={lightData}
+            play
+            className="w-full h-full rounded-full overflow-hidden"
+          />
       </div>
       <button
         onClick={toggleLight}
