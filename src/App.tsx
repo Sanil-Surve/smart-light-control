@@ -76,7 +76,7 @@ const App: React.FC = () => {
       <button
         onClick={toggleLight}
         className={`px-6 py-3 rounded-lg text-white text-lg font-semibold ${
-          lightState === "ON" ? "bg-yellow-500" : "bg-gray-600"
+          lightState === "ON" ? "bg-red-500" : "bg-green-600"
         }`}
       >
         Turn {lightState === "ON" ? "OFF" : "ON"}
