@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
 import mqttReducer from "../features/mqtt/mqttSlice";
 import lightReducer from "../features/light/lightSlice";
+import authReducer from "../features/auth/authSlice"
 
 const persistConfig = {
   key: "root",
@@ -12,6 +13,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
+  auth: authReducer,
   mqtt: mqttReducer,
   light: lightReducer,
 });
