@@ -14,6 +14,7 @@ const Login: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+      <h1 className="text-2xl text-blue-500 font-extrabold">Smart Light Control</h1>
       <div className="w-100 h-100 mb-6">
         <Lottie
           loop

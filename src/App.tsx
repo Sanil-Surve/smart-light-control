@@ -89,8 +89,7 @@ const App: React.FC = () => {
   }, [dispatch, user]);
 
   return (
-
-    <div>
+    <React.Fragment>
       {user ? (
         <>
           {/* <p>Welcome, {user.name}</p> */}
@@ -104,7 +103,7 @@ const App: React.FC = () => {
           </header>
 
           <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center p-4">
-            <h1 className="text-3xl font-bold mb-4 text-blue-500">Smart Light Control</h1>
+            <h1 className="text-3xl font-extrabold mb-4 text-blue-500">Smart Light Control</h1>
             <div className="mb-4 text-lg">
               Status:{" "}
               <span className={isConnected ? "text-green-500" : "text-red-500"}>
@@ -122,7 +121,7 @@ const App: React.FC = () => {
         // <button onClick={signInWithGoogle}>Login with Google</button>
         <Login />
       )}
-    </div>
+    </React.Fragment>
 
   );
 };
