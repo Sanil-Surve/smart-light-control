@@ -96,16 +96,17 @@ const App: React.FC = () => {
     <React.Fragment>
       {user ? (
         <>
-          <header className="text-gray-600 body-font text-shadow-amber-50">
-            <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-              <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                <p className="mr-5 hover:text-gray-900 text-2xl" >Welcome, {user.name}</p>
-              </nav>
-              <button className="hover:text-red-900 text-red-500" onClick={logout}>Logout</button>
-            </div>
+          <header className="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+            <h1 className="text-xl font-semibold text-gray-800">Welcome, {user.name}</h1>
+            <button
+              onClick={logout}
+              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-200"
+            >
+              Logout
+            </button>
           </header>
 
-          <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center p-4">
+          <div className="flex flex-col items-center justify-center min-h-screen bg-white text-center p-4">
             <h1 className="text-3xl font-extrabold mb-4 text-blue-500">Smart Light Control</h1>
             <div className="mb-4 text-lg">
               Status:{" "}
