@@ -8,7 +8,7 @@ import { setLightState } from "./features/light/lightSlice";
 import { getLightState, logout } from "./utils/firebase";
 import { setUser, clearUser } from "./features/auth/authSlice";
 import LightControl from "./components/LightControl";
-import { RootState } from "./app/store";
+import { AppDispatch, RootState } from "./app/store";
 import { doc, setDoc } from "firebase/firestore";
 import { db, auth } from "./utils/firebase";
 import Login from "./components/Login";
@@ -22,7 +22,7 @@ const TOPIC_LIGHT = `${HOME_ID}/light`;
 const App: React.FC = () => {
   const [client, setClient] = useState<mqtt.MqttClient | null>(null);
   const isConnected = useSelector((state: RootState) => state.mqtt.isConnected);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const user = useSelector((state: RootState) => state.auth.user);
 
   useEffect(() => {
@@ -63,15 +63,17 @@ const App: React.FC = () => {
         const lightState = message.toString() as "ON" | "OFF";
         dispatch(setLightState(lightState));
         if (user) {
-          const userDoc = doc(db, "lightStates", user.email);
-          setDoc(userDoc, { state: lightState }, { merge: true });
+          // const userDoc = doc(db, "lightStates", user.email);
+          // setDoc(userDoc, { state: lightState }, { merge: true });
+          const docRef = doc(db, "lightStates", HOME_ID); // or deviceId
+          setDoc(docRef, { state: lightState }, { merge: true });
         }
       }
     });
 
     const fetchLightState = async () => {
       if (user) {
-        const state = await getLightState(user.email);
+        const state = await getLightState(HOME_ID);
         if (state === "ON" || state === "OFF") {
           dispatch(setLightState(state));
         }
@@ -84,15 +86,16 @@ const App: React.FC = () => {
     setClient(mqttClient);
 
     return () => {
+      mqttClient.unsubscribe(TOPIC_LIGHT);
       mqttClient.end();
     };
   }, [dispatch, user]);
+
 
   return (
     <React.Fragment>
       {user ? (
         <>
-          {/* <p>Welcome, {user.name}</p> */}
           <header className="text-gray-600 body-font text-shadow-amber-50">
             <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
               <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
@@ -115,10 +118,8 @@ const App: React.FC = () => {
             </div>
             <LightControl client={client} topic={TOPIC_LIGHT} />
           </div>
-          {/* <button onClick={logout}>Logout</button> */}
         </>
       ) : (
-        // <button onClick={signInWithGoogle}>Login with Google</button>
         <Login />
       )}
     </React.Fragment>
