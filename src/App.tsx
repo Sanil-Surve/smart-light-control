@@ -107,7 +107,7 @@ const App: React.FC = () => {
           </header>
 
           <div className="mt-1">
-            <div className="flex flex-col items-center justify-center min-h-screen bg-white text-center p-4" style={{ marginTop: "-130px" }}>
+            <div className="flex flex-col items-center justify-center min-h-screen bg-white text-center p-4" style={{ marginTop: "-100px" }}>
               <h1 className="text-3xl font-extrabold mb-4 text-blue-500">Smart Light Control</h1>
               <div className="mb-4 text-lg">
                 Status:{" "}

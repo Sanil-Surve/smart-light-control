@@ -102,7 +102,7 @@ const LightControl: React.FC<Props> = ({ client, topic }) => {
       {/* <div className="flex flex-row items-center rounded-2xl mt-3">
         <h3 className={`text-white ${lightState === "OFF" ? "bg-red-500" : "bg-green-600"}`}>{lightState}</h3>
       </div> */}
-      <div className="flex items-center mt-3">
+      <div className="flex items-center mt-5">
         <h3
           className={`px-4 py-2 rounded-2xl text-white text-sm font-semibold shadow-md ${lightState === "OFF" ? "bg-red-500" : "bg-green-600"
             }`}
