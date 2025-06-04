@@ -106,19 +106,22 @@ const App: React.FC = () => {
             </button>
           </header>
 
-          <div className="flex flex-col items-center justify-center min-h-screen bg-white text-center p-4">
-            <h1 className="text-3xl font-extrabold mb-4 text-blue-500">Smart Light Control</h1>
-            <div className="mb-4 text-lg">
-              Status:{" "}
-              <span className={isConnected ? "text-green-500" : "text-red-500"}>
-                {isConnected ? "Connected" : "Disconnected"}
-              </span>
+          <div className="mt-1">
+            <div className="flex flex-col items-center justify-center min-h-screen bg-white text-center p-4" style={{ marginTop: "-200px" }}>
+              <h1 className="text-3xl font-extrabold mb-4 text-blue-500">Smart Light Control</h1>
+              <div className="mb-4 text-lg">
+                Status:{" "}
+                <span className={isConnected ? "text-green-500" : "text-red-500"}>
+                  {isConnected ? "Connected" : "Disconnected"}
+                </span>
+              </div>
+              <div className="w-64 h-64 mb-4 flex items-center justify-center">
+                <Lottie loop animationData={lightData} play className="w-full h-full rounded-full overflow-hidden" />
+              </div>
+              <LightControl client={client} topic={TOPIC_LIGHT} />
             </div>
-            <div className="w-64 h-64 mb-4 flex items-center justify-center">
-              <Lottie loop animationData={lightData} play className="w-full h-full rounded-full overflow-hidden" />
-            </div>
-            <LightControl client={client} topic={TOPIC_LIGHT} />
           </div>
+
         </>
       ) : (
         <Login />
